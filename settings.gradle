@@ -1,0 +1,3 @@
+rootProject.name = 'task4-tablets'
+include 'report'
+include 'entity'

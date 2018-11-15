@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.salereport.mapper.TransactionSaleMapper">
+
+    <resultMap id="saleTransactionsResultMap" type="Transaction">
+        <id property="id" column="transaction_id"/>
+        <result property="dateTransaction" column="date_transaction"/>
+        <result property="patientId" column="patientid"/>
+        <result property="productId" column="productid"/>
+    </resultMap>
+
+    <select id="getTransactions" resultMap="saleTransactionsResultMap" parameterType="date">
+        SELECT
+        T.TRANSACTION_ID as TRANSACTION_ID,
+        T.DATE_TRANSACTION as DATE_TRANSACTION,
+        T.PATIENTID as PATIENTID,
+        T.PRODUCTID as PRODUCTID
+
+        FROM TRANSACTIONS T
+
+        WHERE DATE_TRANSACTION BETWEEN #{dateFrom} and #{dateBefore}
+    </select>
+
+</mapper>

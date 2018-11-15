@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+}
+
+group 'com'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    compile project(':entity')
+    compile group: 'org.springframework', name: 'spring-core', version: '5.0.8.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version: '5.0.8.RELEASE'
+    compile group: 'org.springframework', name: 'spring-test', version: '5.0.8.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version: '5.0.8.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context-support', version: '5.0.8.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jdbc', version: '5.0.8.RELEASE'
+
+    compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
+
+    compile group: 'org.mybatis', name: 'mybatis', version: '3.4.6'
+    compile group: 'org.mybatis', name: 'mybatis-spring', version: '1.3.2'
+
+    compile group: 'org.apache.poi', name: 'poi', version: '4.0.0'
+    compile group: 'org.apache.poi', name: 'poi-ooxml', version: '4.0.0'
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+jar {
+    baseName = 'report'
+    manifest {
+        attributes 'Main-Class': 'com.salereport.ReportMain'
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
