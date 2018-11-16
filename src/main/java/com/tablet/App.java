@@ -13,7 +13,7 @@ public class App {
 
         context.getBean(IUserAuthorization.class).findUser();
 
-        Runnable mainMenu = (Runnable) context.getBean(MainMenu.class);
+        Runnable mainMenu = (Runnable) context.getBean("mainMenu");
         mainMenu.run();
 
     context.close();

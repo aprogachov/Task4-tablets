@@ -48,10 +48,10 @@ public class TransactionSaleReportService implements ITransactionSaleReportServi
             dateCell.setCellValue(transaction.getDateTransaction());
 
             Cell patientIdCell = row.createCell(2);
-            patientIdCell.setCellValue(transaction.getPatientId());
+//            patientIdCell.setCellValue(transaction.getPatientId());
 
             Cell productIdCell = row.createCell(3);
-            productIdCell.setCellValue(transaction.getProductId());
+//            productIdCell.setCellValue(transaction.getProductId());
         }
 
         sheet.autoSizeColumn(1);   //автоматически менять размер столбца с датой
