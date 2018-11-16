@@ -1,7 +1,7 @@
 package com.tablet.menu.state;
 
 import com.tablet.menu.IMenuItem;
-import com.tablet.repository.domain.impl.StateRepository;
+import com.tablet.repository.domain.IStateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,11 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 @StateMenuItem
 public class StateSearchAllMenuItem implements IMenuItem {
 
-    private final StateRepository stateRepository;
+    private final IStateRepository istateRepository;
 
     @Autowired
-    public StateSearchAllMenuItem(StateRepository stateRepository) {
-        this.stateRepository = stateRepository;
+    public StateSearchAllMenuItem(IStateRepository istateRepository) {
+        this.istateRepository = istateRepository;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class StateSearchAllMenuItem implements IMenuItem {
     @Override
     @Transactional
     public int doAction() {
-        stateRepository.findAll().forEach(System.out::println);
+        istateRepository.findAll().forEach(System.out::println);
         return 0;
     }
 }

@@ -13,5 +13,6 @@
 
 	<include file="sql/0010-initial.sql"/>
 	<include file="sql/0012-states.sql"/>
+	<include file="sql/0014-users.sql"/>
 
 </databaseChangeLog>

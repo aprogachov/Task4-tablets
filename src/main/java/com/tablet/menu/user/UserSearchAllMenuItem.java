@@ -1,7 +1,7 @@
 package com.tablet.menu.user;
 
 import com.tablet.menu.IMenuItem;
-import com.tablet.repository.domain.impl.UserRepository;
+import com.tablet.repository.domain.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,11 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 @UserMenuItem
 public class UserSearchAllMenuItem implements IMenuItem {
 
-    private final UserRepository userRepository;
+    private final IUserRepository iuserRepository;
 
     @Autowired
-    public UserSearchAllMenuItem(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserSearchAllMenuItem(IUserRepository iuserRepository) {
+        this.iuserRepository = iuserRepository;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class UserSearchAllMenuItem implements IMenuItem {
     @Override
     @Transactional
     public int doAction() {
-        userRepository.findAll().forEach(System.out::println);
+        iuserRepository.findAll().forEach(System.out::println);
         return 0;
     }
 }

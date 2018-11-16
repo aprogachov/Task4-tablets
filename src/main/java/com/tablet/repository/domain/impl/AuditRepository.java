@@ -47,5 +47,7 @@ public class AuditRepository extends AbstractListRepository<AuditOperation> impl
         AuditOperation record = new AuditOperation(new Date(), status, action);
 
         em.persist(record);
+
+        System.out.println(record);
     }
 }

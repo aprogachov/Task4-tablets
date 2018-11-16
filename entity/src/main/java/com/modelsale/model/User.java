@@ -24,7 +24,7 @@ public class User implements IEntity {
     @Column(name = "EMAIL", nullable = false, length = 30)
     private String email;
 
-    @Column(name = "PASSWORD", nullable = false, length = 30)
+    @Column(name = "PASSWORD", nullable = false, length = 100)
     private String password;
 
     public User(String login, String email, String password) {

@@ -1,6 +1,9 @@
 package com.tablet.menu.patient;
 
+import com.modelsale.model.Patient;
+import com.modelsale.model.Product;
 import com.tablet.menu.IMenuItem;
+import com.tablet.repository.IListRepository;
 import com.tablet.repository.domain.impl.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,10 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 @PatientMenuItem
 public class PatientSearchAllMenuItem implements IMenuItem {
 
-    private final PatientRepository patientRepository;
+    private final IListRepository<Patient> patientRepository;
 
-    @Autowired
-    public PatientSearchAllMenuItem(PatientRepository patientRepository) {
+    public PatientSearchAllMenuItem(IListRepository<Patient> patientRepository) {
         this.patientRepository = patientRepository;
     }
 
