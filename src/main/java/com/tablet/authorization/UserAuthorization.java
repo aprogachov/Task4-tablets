@@ -16,6 +16,8 @@ public class UserAuthorization implements IUserAuthorization {
     private IUserRepository iuserRepository;
     @Autowired
     private SaltItem saltItem;
+    @Autowired
+    private UserLoginHolder userLoginHolder;
 
     @Override
     public void findUser() {
@@ -29,11 +31,13 @@ public class UserAuthorization implements IUserAuthorization {
         String hashPassword = BCrypt.hashpw(fpassword, saltItem.getSalt());
 
         User fuser = iuserRepository.findByLogin(flogin);
+
         if (fuser == null) {
             System.out.println("user not found");
         } else {
             if (fuser.getPassword().equals(hashPassword)) {
-            System.out.println(fuser);
+                userLoginHolder.login(fuser);
+                System.out.println(fuser);
             } else {
                 System.out.println("user not found");
             }

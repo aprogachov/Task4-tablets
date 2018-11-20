@@ -6,12 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
-import com.tablet.exception.StateException;
-import com.modelsale.model.AuditOperation;
 import com.tablet.repository.domain.IAuditRepository;
 
 import java.lang.annotation.Annotation;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Proxy;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -45,31 +42,29 @@ public class AuditAnnotationBeanPostProcessor implements BeanPostProcessor {
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         if (beans.containsKey(beanName)) {
             Class original = beans.get(beanName).getClass();
-            Object beanProxy = Proxy.newProxyInstance(
+            return Proxy.newProxyInstance(
                 original.getClassLoader(),
                 original.getInterfaces(), (proxy, method, args) -> {
                     Annotation annotation = original.getMethod(
                         method.getName(),
                         method.getParameterTypes()).getAnnotation(Audit.class);
-                if (annotation != null) {
-                    boolean success = true;
+                    boolean status = true;
+                    Object result;
                     try {
-                        Object result = method.invoke(bean, args);
+                        result = method.invoke(bean, args);
                         System.out.println("TRUE");
-                        iauditRepository.create(userLoginHolder.getCurrentUser(),success, args);
-                        return result;
                     } catch (Exception e) {
+                        status = false;
                         System.out.println("FALSE");
-                        success = false;
-                        iauditRepository.create(userLoginHolder.getCurrentUser(),success, args);
                         throw e.getCause();
+                    } finally {
+                        if (annotation != null) {
+                            iauditRepository.create(status, userLoginHolder.getCurrentUser(), args);
+                        }
                     }
+                    return result;
                 }
-                else {
-                    return method.invoke(bean, args);
-                }
-                });
-            return beanProxy;
+            );
         }
         return bean;
     }

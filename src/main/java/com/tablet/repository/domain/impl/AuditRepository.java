@@ -38,11 +38,12 @@ public class AuditRepository extends AbstractListRepository<AuditOperation> impl
 
     @Override
     @Transactional(propagation= Propagation.REQUIRES_NEW)
-    public void create(User user, boolean status, Object... params) {
+    public void create(boolean status, User user, Object... params) {
         String action = Arrays.stream(params)
                 .map(Object::toString)
                 .collect(Collectors.joining(";"));
         action = user.getLogin() + " : " + action;
+//        action = "user_1" + " : " + action;
 
         AuditOperation record = new AuditOperation(new Date(), status, action);
 

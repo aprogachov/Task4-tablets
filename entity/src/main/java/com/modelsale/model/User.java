@@ -16,7 +16,7 @@ public class User implements IEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USER_ID", unique = true, nullable = false)
-    private int id;
+    private Integer id;
 
     @Column(name = "LOGIN", nullable = false, length = 20)
     private String login;

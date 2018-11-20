@@ -6,5 +6,5 @@ import com.tablet.repository.IListRepository;
 import com.modelsale.model.AuditOperation;
 
 public interface IAuditRepository extends IListRepository<AuditOperation> {
-    void create(User user, boolean status, Object... params);
+    void create(boolean status, User user, Object... params);
 }

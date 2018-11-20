@@ -1,12 +1,13 @@
 package com.modelsale.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
-@Data
+//@Data
+@Getter
+@Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "patient")
@@ -16,7 +17,7 @@ public class Patient extends EntityCreatedUpdated implements IEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PATIENT_ID", unique = true, nullable = false)
-    private int id;
+    private Integer id;
 
     @Column(name = "PHONE", nullable = false, length = 50)
     private String phone;
