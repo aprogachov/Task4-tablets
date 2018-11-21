@@ -13,7 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity(name = "audit")
 @Table(name = "auditoperations")
-public class AuditOperation extends EntityCreatedUpdated implements IEntity {
+public class AuditOperation implements IEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

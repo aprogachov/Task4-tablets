@@ -20,7 +20,7 @@ public class UserAuthorization implements IUserAuthorization {
     private UserLoginHolder userLoginHolder;
 
     @Override
-    public void findUser() {
+    public boolean findUser() {
         Scanner input = new Scanner(System.in);
         Console console = System.console();
         System.out.println("Your login: ");
@@ -32,15 +32,20 @@ public class UserAuthorization implements IUserAuthorization {
 
         User fuser = iuserRepository.findByLogin(flogin);
 
+        boolean status;
         if (fuser == null) {
-            System.out.println("user not found");
+            System.out.println("user not findByLogin");
+            status = false;
         } else {
             if (fuser.getPassword().equals(hashPassword)) {
                 userLoginHolder.login(fuser);
                 System.out.println(fuser);
+                status = true;
             } else {
-                System.out.println("user not found");
+                System.out.println("Error password");
+                status = false;
             }
         }
+        return status;
     }
 }

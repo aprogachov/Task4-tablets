@@ -42,8 +42,7 @@ public class AuditRepository extends AbstractListRepository<AuditOperation> impl
         String action = Arrays.stream(params)
                 .map(Object::toString)
                 .collect(Collectors.joining(";"));
-        action = user.getLogin() + " : " + action;
-//        action = "user_1" + " : " + action;
+//        action = user.getLogin() + " : " + action;
 
         AuditOperation record = new AuditOperation(new Date(), status, action);
 

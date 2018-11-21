@@ -104,7 +104,7 @@ public class AppConfig {
                 = new LocalContainerEntityManagerFactoryBean();
 
         factoryBean.setDataSource(ds);
-        factoryBean.setPackagesToScan("com.itsm.pub.courses.patients.common.entities");
+        factoryBean.setPackagesToScan("com.modelsale.model");
         factoryBean.setJpaVendorAdapter(jpaVendorAdapter);
         factoryBean.setJpaProperties(jpaProperties);
 

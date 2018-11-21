@@ -11,10 +11,10 @@ public class App {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         context.registerShutdownHook();
 
-        context.getBean(IUserAuthorization.class).findUser();
-
-        Runnable mainMenu = (Runnable) context.getBean("mainMenu");
-        mainMenu.run();
+        if (context.getBean(IUserAuthorization.class).findUser()) {
+            Runnable mainMenu = (Runnable) context.getBean("mainMenu");
+            mainMenu.run();
+        }
 
     context.close();
     }

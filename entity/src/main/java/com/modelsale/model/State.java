@@ -19,10 +19,10 @@ public class State extends EntityCreatedUpdated implements IEntity {
     @Column(name = "STATE_ID", unique = true, nullable = false)
     private Integer id;
 
-    @Column(name = "code", nullable = false, columnDefinition = "varchar(50)")
+    @Column(name = "CODE", nullable = false, columnDefinition = "varchar(50)")
     private String code;
 
-    @Column(name = "code", nullable = false, columnDefinition = "varchar(50)")
+    @Column(name = "NAME", nullable = false, columnDefinition = "varchar(50)")
     private String name;
 
     public State(String code, String name) {
