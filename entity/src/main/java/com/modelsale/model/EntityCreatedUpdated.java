@@ -17,19 +17,19 @@ public class EntityCreatedUpdated {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CREATEDBY")
-    User createdBy;
+    private User createdBy;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "UPDATEDBY")
-    User updatedBy;
+    private User updatedBy;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "CREATEDDATE")
-    Date createdDate;
+    private Date createdDate;
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "UPDATEDDATE")
-    Date updatedDate;
+    private Date updatedDate;
 }

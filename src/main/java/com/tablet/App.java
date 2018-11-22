@@ -1,7 +1,6 @@
 package com.tablet;
 
 import com.tablet.authorization.IUserAuthorization;
-import com.tablet.menu.MainMenu;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class App {

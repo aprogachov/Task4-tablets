@@ -59,7 +59,11 @@ public class AuditAnnotationBeanPostProcessor implements BeanPostProcessor {
                         throw e.getCause();
                     } finally {
                         if (annotation != null) {
-                            iauditRepository.create(status, userLoginHolder.getCurrentUser(), args);
+                            String action = ((Audit) annotation).action();
+                            Object[] newArgs = new Object[args.length + 1];
+                            newArgs[0] = action;
+                            System.arraycopy(args, 0, newArgs, 1, args.length);
+                            iauditRepository.create(status, userLoginHolder.getCurrentUser(), newArgs);
                         }
                     }
                     return result;

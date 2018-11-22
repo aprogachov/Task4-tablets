@@ -35,7 +35,7 @@ public class CreateSaleMenuItem implements IMenuItem {
 
     @Override
     public String getTitle() {
-        return "Make transaction";
+        return "Make sale";
     }
 
     @Override

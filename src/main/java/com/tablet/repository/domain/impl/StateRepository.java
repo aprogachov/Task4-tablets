@@ -27,14 +27,14 @@ public class StateRepository extends AbstractListRepository<State> implements IS
     }
 
     @Override
-    @Transactional(propagation= Propagation.REQUIRES_NEW)
+//    @Transactional(propagation= Propagation.REQUIRES_NEW)
     @Audit(action = "FindById state")
     public State findById(Integer stateId) {
         return super.findById(stateId);
     }
 
     @Override
-    @Transactional(propagation= Propagation.REQUIRES_NEW)
+//    @Transactional(propagation= Propagation.REQUIRES_NEW)
     @Audit(action = "FindByCode state")
     public State findByCode(String code) {
         TypedQuery<State> query = em.createQuery("select s from state s where s.code = :code", State.class);

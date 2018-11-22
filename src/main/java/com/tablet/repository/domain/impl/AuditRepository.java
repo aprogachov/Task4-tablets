@@ -41,8 +41,9 @@ public class AuditRepository extends AbstractListRepository<AuditOperation> impl
     public void create(boolean status, User user, Object... params) {
         String action = Arrays.stream(params)
                 .map(Object::toString)
-                .collect(Collectors.joining(";"));
-//        action = user.getLogin() + " : " + action;
+                .collect(Collectors.joining("; "));
+
+        action = user.getLogin() + " : " + action;
 
         AuditOperation record = new AuditOperation(new Date(), status, action);
 

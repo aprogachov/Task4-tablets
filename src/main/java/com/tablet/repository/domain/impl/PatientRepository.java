@@ -41,14 +41,14 @@ public class PatientRepository extends AbstractCrudRepository<Patient> implement
     }
 
     @Override
-    @Transactional(propagation=Propagation.REQUIRES_NEW)
-    @Audit(action = "Find all patients")
+//    @Transactional(propagation=Propagation.REQUIRES_NEW)
+//    @Audit(action = "Find all patients")
     public List<Patient> findAll() {
         return super.findAll();
     }
 
     @Override
-    @Transactional(propagation= Propagation.REQUIRES_NEW)
+//    @Transactional(propagation= Propagation.REQUIRES_NEW)
     @Audit(action = "FindById patient")
     public Patient findById(Integer patientId) {
         return super.findById(patientId);

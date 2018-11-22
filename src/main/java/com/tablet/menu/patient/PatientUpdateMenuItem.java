@@ -43,7 +43,7 @@ public class PatientUpdateMenuItem implements IMenuItem {
             System.out.println("patient not found");
             return 0;
         } else {
-            System.out.println(patient);
+//            System.out.println(patient);
         }
         patientConsoleFactory.update(patient);
         patientRepository.update(patient);

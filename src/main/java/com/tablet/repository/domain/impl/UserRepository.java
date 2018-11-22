@@ -34,8 +34,8 @@ public class UserRepository extends AbstractListRepository<User> implements IUse
     }
 
     @Override
-    @Transactional(propagation= Propagation.REQUIRES_NEW)
-    @Audit(action = "FindByLogin user")
+//    @Transactional(propagation= Propagation.REQUIRES_NEW)
+//    @Audit(action = "FindByLogin user")
     public User findByLogin(String login) {
         TypedQuery<User> query = em.createQuery("select u from user u where u.login = :login", User.class);
         query.setParameter("login", login);

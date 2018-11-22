@@ -3,6 +3,7 @@ package com.modelsale.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Date;
 
 //@Data
 @Getter
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "state")
-@Table(name = "states")
+@Table(name = "STATES")
 public class State extends EntityCreatedUpdated implements IEntity {
 
     @Id
@@ -19,10 +20,10 @@ public class State extends EntityCreatedUpdated implements IEntity {
     @Column(name = "STATE_ID", unique = true, nullable = false)
     private Integer id;
 
-    @Column(name = "CODE", nullable = false, columnDefinition = "varchar(50)")
+    @Column(name = "CODE", nullable = false)
     private String code;
 
-    @Column(name = "NAME", nullable = false, columnDefinition = "varchar(50)")
+    @Column(name = "NAME", nullable = false)
     private String name;
 
     public State(String code, String name) {

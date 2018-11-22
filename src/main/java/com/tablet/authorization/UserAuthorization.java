@@ -32,7 +32,7 @@ public class UserAuthorization implements IUserAuthorization {
 
         User fuser = iuserRepository.findByLogin(flogin);
 
-        boolean status;
+        boolean status = true;
         if (fuser == null) {
             System.out.println("user not findByLogin");
             status = false;
@@ -49,3 +49,4 @@ public class UserAuthorization implements IUserAuthorization {
         return status;
     }
 }
+

@@ -33,7 +33,7 @@ public class ProductSearchByIdMenuItem implements IMenuItem {
         int id = menuHelper.readInt();
         Product product = productRepository.findById(id);
         if (product == null) {
-            System.out.println("patient not found");
+            System.out.println("product not found");
         } else {
             System.out.println(product);
         }

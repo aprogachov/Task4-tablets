@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "product")
-@Table(name = "products")
+@Table(name = "PRODUCTS")
 public class Product extends EntityCreatedUpdated implements IEntity {
 
     @Id
