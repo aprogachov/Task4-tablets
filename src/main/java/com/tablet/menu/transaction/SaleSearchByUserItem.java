@@ -1,32 +1,35 @@
 package com.tablet.menu.transaction;
 
 import com.modelsale.model.Transaction;
+import com.modelsale.model.User;
 import com.tablet.menu.IMenuItem;
+import com.tablet.menu.util.MenuHelper;
 import com.tablet.repository.IListRepository;
+import com.tablet.repository.domain.ITransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
 @SaleMenuItem
-public class SaleSearchAllMenuItem implements IMenuItem {
+public class SaleSearchByUserItem implements IMenuItem {
 
-    private final IListRepository<Transaction> transactionRepository;
+    private final ITransactionRepository itransactionRepository;
 
     @Autowired
-    public SaleSearchAllMenuItem(IListRepository<Transaction> transactionRepository) {
-        this.transactionRepository = transactionRepository;
+    public SaleSearchByUserItem(ITransactionRepository itransactionRepository) {
+        this.itransactionRepository = itransactionRepository;
     }
 
     @Override
     public String getTitle() {
-        return "Print all sales";
+        return "Search salesByUser";
     }
 
     @Override
     @Transactional
     public int doAction() {
-        transactionRepository.findAll().forEach(System.out::println);
+        itransactionRepository.salesByUser().forEach(System.out::println);
         return 0;
     }
 }

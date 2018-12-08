@@ -5,7 +5,6 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.Date;
 
-//@Data
 @Getter
 @Setter
 @ToString
@@ -24,13 +23,10 @@ public class AuditOperation implements IEntity {
     @Column(name = "DATE_AUDIT", nullable = false)
     private Date dateAuditOperation;
 
-//    @Column(name = "STATUS", nullable = false, length = 30)
-//    private String status;
-
     @Column(name = "STATUS", nullable = false, length = 30)
     private boolean status;
 
-    @Column(name = "ACTION", nullable = false, length = 100)
+    @Column(name = "ACTION", nullable = false, length = 2000)
     private String action;
 
     public AuditOperation(Date dateAuditOperation, boolean status, String action) {

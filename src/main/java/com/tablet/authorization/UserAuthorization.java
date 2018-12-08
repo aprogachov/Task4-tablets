@@ -27,12 +27,12 @@ public class UserAuthorization implements IUserAuthorization {
         String flogin = input.nextLine();
         System.out.println("Your password: "); // user_1
         String fpassword = (console != null) ? new String(console.readPassword()): input.nextLine();
-        /* www.browserling.com/tools/bcrypt-check */
-        String hashPassword = BCrypt.hashpw(fpassword, saltItem.getSalt());
+
+        String hashPassword = BCrypt.hashpw(fpassword, saltItem.getSalt()); /* www.browserling.com/tools/bcrypt-check */
 
         User fuser = iuserRepository.findByLogin(flogin);
 
-        boolean status = true;
+        boolean status;
         if (fuser == null) {
             System.out.println("user not findByLogin");
             status = false;

@@ -34,7 +34,6 @@ public class PatientConsoleFactory implements ConsoleFactory<Patient> {
         System.out.println("Input phone:");
         String phone = menuHelper.read();
 
-
         System.out.println("Input state code");
         String stateCode = menuHelper.read();
 

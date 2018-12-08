@@ -14,8 +14,6 @@ public class ProductConsoleFactory implements ConsoleFactory<Product> {
     private final MenuHelper menuHelper;
     private final IStateRepository istateRepository;
 
-
-
     @Autowired
     public ProductConsoleFactory(
             MenuHelper menuHelper,
@@ -35,7 +33,6 @@ public class ProductConsoleFactory implements ConsoleFactory<Product> {
     public void update(Product product) {
         System.out.println("Input name:");
         String name = menuHelper.read();
-
 
         System.out.println("Input state code");
         String stateCode = menuHelper.read();

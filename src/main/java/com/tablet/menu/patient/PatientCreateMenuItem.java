@@ -14,16 +14,13 @@ public class PatientCreateMenuItem implements IMenuItem {
 
     private final ConsoleFactory<Patient> patientConsoleFactory;
     private final ICrudRepository<Patient> patientRepository;
-//    private final IPatientRepository ipatientRepository;
 
     @Autowired
     public PatientCreateMenuItem(
             ConsoleFactory<Patient> patientConsoleFactory,
-//            IPatientRepository ipatientRepository,
             ICrudRepository<Patient> patientRepository) {
         this.patientConsoleFactory = patientConsoleFactory;
         this.patientRepository = patientRepository;
-//        this.ipatientRepository = ipatientRepository;
     }
 
     @Override

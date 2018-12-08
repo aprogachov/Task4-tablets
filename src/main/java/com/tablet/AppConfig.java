@@ -56,11 +56,6 @@ public class AppConfig {
         return ds;
     }
 
-//    @Bean
-//    public PlatformTransactionManager txManager(DataSource ds) {
-//        return new DataSourceTransactionManager(ds);
-//    }
-
     @Bean
     public JdbcTemplate jdbcTemplate(DataSource ds) {
         return new JdbcTemplate(ds);

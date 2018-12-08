@@ -23,7 +23,6 @@ public class StateSearchAllMenuItem implements IMenuItem {
     }
 
     @Override
-    @Transactional
     public int doAction() {
         istateRepository.findAll().forEach(System.out::println);
         return 0;

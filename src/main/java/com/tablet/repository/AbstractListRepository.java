@@ -1,6 +1,7 @@
 package com.tablet.repository;
 
 import com.modelsale.model.IEntity;
+import com.tablet.util.Audit;
 
 import javax.persistence.*;
 import java.util.List;

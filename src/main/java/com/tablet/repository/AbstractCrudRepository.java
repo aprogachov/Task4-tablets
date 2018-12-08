@@ -10,12 +10,14 @@ public abstract class AbstractCrudRepository<E extends IEntity>
     @Override
     @Transactional
     public void create(E e) {
+        addCreatedBy(e);
         em.persist(e);
     }
 
     @Override
     @Transactional
     public void update(E e) {
+        addUpdatedBy(e);
         em.merge(e);
     }
 
@@ -29,5 +31,9 @@ public abstract class AbstractCrudRepository<E extends IEntity>
 
         em.remove(e);
     }
+
+    protected abstract void addCreatedBy(E e);
+
+    protected abstract void addUpdatedBy(E e);
 
 }

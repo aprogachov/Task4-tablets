@@ -6,8 +6,16 @@
     <resultMap id="saleTransactionsResultMap" type="Transaction">
         <id property="id" column="transaction_id"/>
         <result property="dateTransaction" column="date_transaction"/>
-        <result property="patientId" column="patientid"/>
-        <result property="productId" column="productid"/>
+        <result property="patients.patient_id" column="patients_patient_id"/>
+        <result property="patients.phone" column="patients_phone"/>
+        <result property="patients.states.state_id" column="patients_states_state_id"/>
+        <result property="patients.states.code" column="patients_states_code"/>
+        <result property="patients.states.name" column="patients_states_name"/>
+        <result property="products.product_id" column="products_product_id"/>
+        <result property="products.name" column="products_name"/>
+        <result property="products.states.state_id" column="products_states_state_id"/>
+        <result property="products.states.code" column="products_states_code"/>
+        <result property="products.states.name" column="products_states_name"/>
     </resultMap>
 
     <select id="getTransactions" resultMap="saleTransactionsResultMap" parameterType="date">

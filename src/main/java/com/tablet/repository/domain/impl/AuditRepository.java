@@ -23,21 +23,12 @@ public class AuditRepository extends AbstractListRepository<AuditOperation> impl
     }
 
     @Override
-    @Transactional(propagation=Propagation.REQUIRES_NEW)
-    @Audit(action = "Find all auditOperations")
-    public List<AuditOperation> findAll() {
-        return super.findAll();
-    }
-
-    @Override
-    @Transactional(propagation= Propagation.REQUIRES_NEW)
     @Audit(action = "FindById auditOperation")
     public AuditOperation findById(Integer auditOperationId) {
         return super.findById(auditOperationId);
     }
 
     @Override
-    @Transactional(propagation= Propagation.REQUIRES_NEW)
     public void create(boolean status, User user, Object... params) {
         String action = Arrays.stream(params)
                 .map(Object::toString)

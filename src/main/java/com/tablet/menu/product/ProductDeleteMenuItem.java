@@ -32,14 +32,12 @@ public class ProductDeleteMenuItem implements IMenuItem {
     public int doAction() {
         System.out.println("Input product id:");
         int id = menuHelper.readInt();
-        productRepository.deleteById(id);
-
-//        Patient patient = patientRepository.find(id);
-//        if (patient == null) {
-//            System.out.println("patient not found");
-//        } else {
-//            patientRepository.delete(patient);
-//        }
+        Product product = productRepository.findById(id);
+        if (product == null) {
+            System.out.println("patient not found");
+        } else {
+            productRepository.deleteById(id);
+        }
         
         return 0;
     }
