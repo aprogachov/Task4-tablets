@@ -24,13 +24,13 @@ public class TransactionSaleReportService implements ITransactionSaleReportServi
 
         Row titleRow = sheet.createRow(0);   //создаем строку заголовка
         Cell idCellTitle = titleRow.createCell(0);   //ячейка заголовка для id
-        idCellTitle.setCellValue("id");
+        idCellTitle.setCellValue("Id");
         Cell dateCellTitle = titleRow.createCell(1);   //ячейка заголовка для date
-        dateCellTitle.setCellValue("date");
+        dateCellTitle.setCellValue("Date");
         Cell patientIdCellTitle = titleRow.createCell(2);   //ячейка заголовка для patientId
-        patientIdCellTitle.setCellValue("patientId");
+        patientIdCellTitle.setCellValue("Patient");
         Cell productIdCellTitle = titleRow.createCell(3);   //ячейка заголовка для productId
-        productIdCellTitle.setCellValue("productId");
+        productIdCellTitle.setCellValue("Product");
 
         DataFormat format = workbook.createDataFormat();
         CellStyle dateStyle = workbook.createCellStyle();
@@ -47,14 +47,19 @@ public class TransactionSaleReportService implements ITransactionSaleReportServi
             dateCell.setCellStyle(dateStyle);
             dateCell.setCellValue(transaction.getDateTransaction());
 
-            Cell patientIdCell = row.createCell(2);
-//            patientIdCell.setCellValue(transaction.getPatientId());
+            Cell patientCell = row.createCell(2);
+            patientCell.setCellValue("Phone: " + transaction.getPatient().getPhone() +
+                    "; State: " + transaction.getPatient().getState().getName());
 
-            Cell productIdCell = row.createCell(3);
-//            productIdCell.setCellValue(transaction.getProductId());
+            Cell productCell = row.createCell(3);
+            productCell.setCellValue("Product: " + transaction.getProduct().getName() +
+                    "; State: " + transaction.getProduct().getState().getName());
         }
 
-        sheet.autoSizeColumn(1);   //автоматически менять размер столбца с датой
+        //автоматически менять размер столбцов, кроме Id
+        for (int x = 1; x < sheet.getRow(0).getPhysicalNumberOfCells(); x++) {
+            sheet.autoSizeColumn(x);
+        }
 
         //записываем в файл
         File file = new File("ExcelReport/TransactionSaleReport.xlsx");

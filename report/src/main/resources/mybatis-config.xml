@@ -6,9 +6,6 @@
 <configuration>
     <typeAliases>
         <typeAlias type='com.modelsale.model.Transaction' alias='Transaction'></typeAlias>
-        <typeAlias type='com.modelsale.model.Patient' alias='Patient'></typeAlias>
-        <typeAlias type='com.modelsale.model.Product' alias='Product'></typeAlias>
-        <typeAlias type='com.modelsale.model.State' alias='State'></typeAlias>
     </typeAliases>
 
     <mappers>

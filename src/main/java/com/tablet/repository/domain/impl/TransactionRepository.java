@@ -32,7 +32,7 @@ public class TransactionRepository extends AbstractCrudRepository<Transaction> i
     @Override
     @Audit(action = "SALE")
     public void sale(Product product, Patient patient) {
-        if (!product.getState().equals(patient.getState())) {
+        if (!product.getState().getName().equals(patient.getState().getName())) {
             throw new IllegalArgumentException("THE PRODUCT IS NOT FOR SALE IN THIS STATE");
         }
 

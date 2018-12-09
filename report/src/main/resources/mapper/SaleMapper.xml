@@ -1,32 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.salereport.mapper.TransactionSaleMapper">
 
     <resultMap id="saleTransactionsResultMap" type="Transaction">
         <id property="id" column="transaction_id"/>
         <result property="dateTransaction" column="date_transaction"/>
-        <result property="patients.patient_id" column="patients_patient_id"/>
-        <result property="patients.phone" column="patients_phone"/>
-        <result property="patients.states.state_id" column="patients_states_state_id"/>
-        <result property="patients.states.code" column="patients_states_code"/>
-        <result property="patients.states.name" column="patients_states_name"/>
-        <result property="products.product_id" column="products_product_id"/>
-        <result property="products.name" column="products_name"/>
-        <result property="products.states.state_id" column="products_states_state_id"/>
-        <result property="products.states.code" column="products_states_code"/>
-        <result property="products.states.name" column="products_states_name"/>
+        <result property="patient.id" column="patientid"/>
+        <result property="patient.phone" column="patients_phone"/>
+        <result property="patient.state.id" column="patients_states_state_id"/>
+        <result property="patient.state.code" column="patients_states_code"/>
+        <result property="patient.state.name" column="patients_states_name"/>
+        <result property="product.id" column="productid"/>
+        <result property="product.name" column="products_name"/>
+        <result property="product.state.id" column="products_states_state_id"/>
+        <result property="product.state.code" column="products_states_code"/>
+        <result property="product.state.name" column="products_states_name"/>
     </resultMap>
 
     <select id="getTransactions" resultMap="saleTransactionsResultMap" parameterType="date">
         SELECT
-        T.TRANSACTION_ID as TRANSACTION_ID,
-        T.DATE_TRANSACTION as DATE_TRANSACTION,
-        T.PATIENTID as PATIENTID,
-        T.PRODUCTID as PRODUCTID
-
+            T.TRANSACTION_ID as TRANSACTION_ID,
+            T.DATE_TRANSACTION as DATE_TRANSACTION,
+            PAT.PATIENT_ID as PATIENTID,
+            PAT.PHONE as PATIENTS_PHONE,
+            PAT.STATEID as PATIENTS_STATES_STATE_ID,
+            PAT_STATES.CODE as PATIENTS_STATES_CODE,
+            PAT_STATES.NAME as PATIENTS_STATES_NAME,
+            PR.PRODUCT_ID as PRODUCTID,
+            PR.NAME as PRODUCTS_NAME,
+            PR.STATEID as PRODUCTS_STATES_STATE_ID,
+            PR_STATES.CODE as PRODUCTS_STATES_CODE,
+            PR_STATES.NAME as PRODUCTS_STATES_NAME
         FROM TRANSACTIONS T
-
+            INNER JOIN PATIENTS PAT on T.PATIENTID = PAT.PATIENT_ID
+            INNER JOIN PRODUCTS PR on T.PRODUCTID = PR.PRODUCT_ID
+            INNER JOIN STATES PAT_STATES on PAT.STATEID = PAT_STATES.STATE_ID
+            INNER JOIN STATES PR_STATES on PR.STATEID = PR_STATES.STATE_ID
         WHERE DATE_TRANSACTION BETWEEN #{dateFrom} and #{dateBefore}
     </select>
 
